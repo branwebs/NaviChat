@@ -29,46 +29,7 @@
 
 <body>
     <?php
-    include_once("db_Connect.php");
-    session_start();
-
-    $errors = [];
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $uid = $_POST["uid"];
-        $type = $_POST["user_type"];
-
-        // Check if fields are filled
-        if (empty($uid) || empty($type) || $type == '0') {
-            $errors[] = "Please fill in all fields.";
-        } else {
-
-            $stmt = $conn->prepare("SELECT * FROM users WHERE uid = ? AND type = ?");
-            $stmt->bind_param("si", $uid, $type);
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            // Check if there is a matching record
-            if ($result->num_rows > 0) {
-                $user = $result->fetch_assoc();
-
-                // Set session and redirect based on user type
-                if ($type === '1') {
-                    $_SESSION['uid'] = $_POST["uid"];
-                    $_SESSION['user_type'] = $_POST["user_type"];
-                    header("Location: user_dashboard.php");
-                    exit();
-                } else if ($type === '2') {
-                    $_SESSION['uid'] = $_POST["uid"];
-                    $_SESSION['user_type'] = $_POST["user_type"];
-                    header("Location: admin_dashboard.php");
-                    exit();
-                }
-            } else {
-                $errors[] = "Invalid credentials. Please try again.";
-            }
-        }
-    }
+   require_once 'dbCfg.php';
     ?>
 
 
@@ -102,7 +63,7 @@
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="Boundary/userLogin.php">
+                            <a class="nav-link" href="Boundary/Users/userLogin.php">
                                 <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
                             </a>
                         </li>
@@ -131,62 +92,63 @@
     <!-- FAQ -->
 
     <section class="white-section" id="faq">
+    <div class="container-fluid">
+        <div class="row">
+            <?php
+            $faqQuery = "SELECT title, details FROM faq";
+            $faqResult = $conn->query($faqQuery);
 
-        <div class="container-fluid">
-
-            <div class="row">
-                <div class="feature-box col-lg-4">
-                    <i class="icon fas fa-check-circle fa-4x"></i>
-                    <h3 class="feature-title">What are the benefits of NaviChat?</h3>
-                    <p>Increase customer satisfaction: NaviBot analyzes customer questions and delivers human-like answers in seconds. This enables your customers to receive the information they need 24/7, increasing their satisfaction.</p>
-                </div>
-
-                <div class="feature-box col-lg-4">
-                    <i class="icon fas fa-bullseye fa-4x"></i>
-                    <h3 class="feature-title">Is NaviChat easy to use?</h3>
-                    <p>Our design is user friendly and all controlled in the user dashboard convieneintly.</p>
-                </div>
-
-                <div class="feature-box col-lg-4">
-                    <i class="icon fas fa-heart fa-4x"></i>
-                    <h3 class="feature-title">Is NaviChat Effective?</h3>
-                    <p>Yes as shown in our reviews many of our customers have seen a significant increase in customer retention and sales.</p>
-                </div>
-            </div>
-
-
+            if ($faqResult->num_rows > 0) {
+                while ($row = $faqResult->fetch_assoc()) {
+                    echo '<div class="feature-box col-lg-4">';
+                    echo '<i class="icon fas fa-check-circle fa-4x"></i>';
+                    echo '<h3 class="feature-title">' . htmlspecialchars($row['title']) . '</h3>';
+                    echo '<p>' . htmlspecialchars($row['details']) . '</p>';
+                    echo '</div>';
+                }
+            } else {
+                echo "<p>No FAQs found.</p>";
+            }
+            ?>
         </div>
-    </section>
+    </div>
+</section>
+
 
 
     <!-- Testimonials -->
 
     <section class="colored-section" id="testimonials">
+    <div id="testimonial-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <?php
+            $testimonialQuery = "SELECT review, reviewer FROM testimonials";
+            $testimonialResult = $conn->query($testimonialQuery);
+            $isActive = true;
 
-        <div id="testimonial-carousel" class="carousel slide" data-ride="false">
-            <div class="carousel-inner">
-                <div class="carousel-item active container-fluid">
-                    <h2 class="testimonial-text">After using this chatbot service for my business my sales have went up significantly!</h2>
-                    <em>Jamie, Founder of SlappyCakes</em>
-                </div>
-                <div class="carousel-item container-fluid">
-                    <h2 class="testimonial-text">I used to be overwhelmed with customer enquries but now all quieres are answered promptly and customers are satisfied!</h2>
-                    <em>Sophie, Customer Service Agent at Beds&Pillows</em>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
+            if ($testimonialResult->num_rows > 0) {
+                while ($row = $testimonialResult->fetch_assoc()) {
+                    echo '<div class="carousel-item ' . ($isActive ? 'active' : '') . ' container-fluid">';
+                    echo '<h2 class="testimonial-text">' . htmlspecialchars($row['review']) . '</h2>';
+                    echo '<em>' . htmlspecialchars($row['reviewer']) . '</em>';
+                    echo '</div>';
+                    $isActive = false;
+                }
+            } else {
+                echo "<p>No testimonials found.</p>";
+            }
+            ?>
         </div>
-
-    </section>
-
+        <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</section>
 
     <!-- Press -->
-
     <section class="colored-section" id="press">
         <img class="press-logo" src="images/techcrunch.png" alt="tc-logo">
         <img class="press-logo" src="images/tnw.png" alt="tnw-logo">
@@ -197,48 +159,34 @@
 
 
     <!-- Pricing -->
-
     <section class="white-section" id="pricing">
+    <h2 class="section-heading">Our Subscription Plan</h2>
+    <p>Simple plan with all the features!</p>
+    <div class="row">
+        <?php
+        $pricingQuery = "SELECT tier, price, features FROM Pricing";
+        $pricingResult = $conn->query($pricingQuery);
 
-        <h2 class="section-heading">Our Subscription Plan</h2>
-        <p>Simple plan with all the features!</p>
-
-        <div class="row">
-
-            <div class="pricing-column col-lg-4 col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Starter</h3>
-                    </div>
-                    <div class="card-body">
-                        <h2 class="price-text">$29 /mo</h2>
-                        <p>Chatbot API</p>
-                        <p>Ticketing Feature</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="pricing-column col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Premium</h3>
-                    </div>
-                    <div class="card-body">
-                        <h2 class="price-text">$59 / mo</h2>
-                        <p>Chatbot API</p>
-                        <p>Ticketing Feature</p>
-                        <p>Analysis and monitoring</p>
-                        <p>Prioirity Support</p>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
-
-    </section>
+        if ($pricingResult->num_rows > 0) {
+            while ($row = $pricingResult->fetch_assoc()) {
+                echo '<div class="pricing-column col-lg-4 col-md-6">';
+                echo '<div class="card">';
+                echo '<div class="card-header">';
+                echo '<h3>' . htmlspecialchars($row['tier']) . '</h3>';
+                echo '</div>';
+                echo '<div class="card-body">';
+                echo '<h2 class="price-text">$' . htmlspecialchars($row['price']) . ' / mo</h2>';
+                echo '<p>' . nl2br(htmlspecialchars($row['features'])) . '</p>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+        } else {
+            echo "<p>No pricing plans found.</p>";
+        }
+        ?>
+    </div>
+</section>
 
 
     <!-- Call to Action -->

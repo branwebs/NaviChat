@@ -8,35 +8,28 @@ class User
 
     public function __construct()
     {
-        global $conn;
+        global $conn; // Assuming $conn is the global database connection
         $this->conn = $conn;
     }
 
-
     public function getUserByEmail($email)
     {
-        $stmt = $this->conn->prepare("SELECT email, password, access FROM users WHERE email = ?");
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
-
-        if ($result->num_rows === 1) {
-            return $result->fetch_assoc();
-        }
-
-        return null; // No user found
+        return $result->fetch_assoc();
     }
 
-   
-    public function createUser($email, $password, $name, $phone_number, $company)
+    public function createUser($name, $email, $password, $company, $phone)
     {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        $stmt = $this->conn->prepare("INSERT INTO users (email, password, name, phone_number, company, access) VALUES (?, ?, ?, ?, ?, 0)");
-        $stmt->bind_param("sssss", $email, $hashedPassword, $name, $phone_number, $company);
-
+        $stmt = $this->conn->prepare(
+            "INSERT INTO users (name, email, password, company, phone, access) VALUES (?, ?, ?, ?, ?, 0)"
+        );
+        $stmt->bind_param("sssss", $name, $email, $password, $company, $phone);
         return $stmt->execute();
     }
 }
 
 ?>
+

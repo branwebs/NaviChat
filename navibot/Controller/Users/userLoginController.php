@@ -8,39 +8,51 @@ class UserLoginController
 
     public function __construct()
     {
-        $this->userModel = new User(); // Instance of the User entity class
+        $this->userModel = new User();
     }
 
     /**
-     * Validate login credentials.
+     * Process login and return errors if any.
      *
      * @param string $email
      * @param string $password
      * @return array
      */
-    public function login($email, $password)
+    public function processLogin($email, $password)
     {
         $errors = [];
+
+        // Input validation
         if (empty($email) || empty($password)) {
             $errors[] = "Please fill in all fields.";
             return $errors;
         }
 
-        $user = $this->userModel->getUserByEmail($email);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Invalid email format.";
+            return $errors;
+        }
 
-        if (!$user) {
+        // Fetch user
+        $user = $this->userModel->getUserByEmail($email);
+        if (!$user || !password_verify($password, $user['password'])) {
             $errors[] = "Invalid email or password.";
-        } elseif (!password_verify($password, $user['password'])) {
-            $errors[] = "Invalid email or password.";
-        } else {
-            if ($user['access'] == 0) {
+            return $errors;
+        }
+
+        // Handle access level
+        switch ($user['access']) {
+            case 0:
                 $errors[] = "Account under approval.";
-            } elseif ($user['access'] == 1) {
+                break;
+            case 1:
                 header('Location: ../../Boundary/RegisteredUser/user_dashboard.php');
                 exit;
-            } else {
+            case 4:
+                header('Location: ../../Boundary/Admin/admin_dashboard.php');
+                exit;
+            default:
                 $errors[] = "Unexpected access level. Please contact support.";
-            }
         }
 
         return $errors;
@@ -48,3 +60,4 @@ class UserLoginController
 }
 
 ?>
+

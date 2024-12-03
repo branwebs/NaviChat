@@ -3,47 +3,13 @@ require_once '../../dbCfg.php';
 require_once '../../Controller/Users/userLoginController.php';
 
 $errors = [];
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    // Check if fields are filled
-    if (empty($email) || empty($password)) {
-        $errors[] = "Please fill in all fields.";
-    } else {
-        // Query the database
-        $stmt = $conn->prepare("SELECT email, password, access FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        // Check if a user exists
-        if ($result->num_rows === 1) {
-            $row = $result->fetch_assoc();
-
-            // Verify the password
-            if (password_verify($password, $row['password'])) {
-                if ($row['access'] == 0) {
-                    $errors[] = "Account under approval.";
-                } elseif ($row['access'] == 1) {
-                    header('Location: ../../Boundary/RegisteredUser/user_dashboard.php');
-                    exit; // Stop script execution after redirect
-                } else {
-                    $errors[] = "Unexpected access level. Please contact support.";
-                }
-            } else {
-                $errors[] = "Invalid email or password.";
-            }
-        } else {
-            $errors[] = "Invalid email or password.";
-        }
-
-        $stmt->close();
-    }
+    $loginController = new UserLoginController();
+    $errors = $loginController->processLogin($email, $password);
 }
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -84,3 +50,4 @@ $conn->close();
 </body>
 
 </html>
+

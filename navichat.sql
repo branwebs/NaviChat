@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2024 at 08:12 AM
+-- Generation Time: Dec 03, 2024 at 07:33 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -91,8 +91,8 @@ INSERT INTO `testimonials` (`review`, `reviewer`) VALUES
 CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `phone_number` int(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone` int(20) NOT NULL,
   `company` varchar(100) NOT NULL,
   `access` int(5) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -101,9 +101,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`email`, `name`, `password`, `phone_number`, `company`, `access`) VALUES
-('admin', 'admin', 'theadmin', 0, 'navichat', 4),
-('cdshop@business.com', 'Carl Goodwill', '1234', 82353535, 'cdshop', 1);
+INSERT INTO `users` (`email`, `name`, `password`, `phone`, `company`, `access`) VALUES
+('admin', 'admin', '$2y$10$3FoWDbomqvc7Ao5hT3mNSuw', 0, 'navichat', 4),
+('bryden@box.com', 'bryden', '$2y$10$ISMGjoaYzKZXaxEI5du9D.vfu.SkpFA.bTILxG8eiMO/MQ0Kgd51K', 2147483647, 'hi5', 1),
+('cdshop@business.com', 'Carl Goodwill', '$2y$10$NGkAJvmGVPrdh/GYdTtkNO5', 82353535, 'cdshop', 1);
 
 --
 -- Indexes for dumped tables
@@ -126,6 +127,12 @@ ALTER TABLE `pricing`
 --
 ALTER TABLE `testimonials`
   ADD UNIQUE KEY `reviewer` (`reviewer`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD UNIQUE KEY `email` (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2024 at 07:33 AM
+-- Generation Time: Dec 05, 2024 at 09:51 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -102,9 +102,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`email`, `name`, `password`, `phone`, `company`, `access`) VALUES
-('admin', 'admin', '$2y$10$3FoWDbomqvc7Ao5hT3mNSuw', 0, 'navichat', 4),
-('bryden@box.com', 'bryden', '$2y$10$ISMGjoaYzKZXaxEI5du9D.vfu.SkpFA.bTILxG8eiMO/MQ0Kgd51K', 2147483647, 'hi5', 1),
-('cdshop@business.com', 'Carl Goodwill', '$2y$10$NGkAJvmGVPrdh/GYdTtkNO5', 82353535, 'cdshop', 1);
+('admin@navibot.com', 'admin', '$2y$10$z8oNNL1qxprkflbzlQOdW.peQy/Q2mEHbRo/2a265rCyal88mfrZy', 0, 'navichat', 4),
+('eggs@farm.com', 'yolk', '$2y$10$iAaztbztcQLPMw4bV72Br.8Xn/fIL3yBHSbilD5l8OtQJ7zxTI28K', 86549012, 'eggs', 1);
 
 --
 -- Indexes for dumped tables

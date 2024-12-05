@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #40a89e;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    padding-top: 50px; /* Added padding for top */
+    padding-bottom: 50px; /* Added padding for bottom */
+}
+
+.form-box {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 0 15px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.navi-chat {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.navi-chat:hover {
+    text-decoration: underline; /* Optional hover effect */
+}
+
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding and border are inside the width */
+}
+
+input[type="submit"] {
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.register-btn {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.register-btn:hover {
+    background-color: #0056b3;
+}
+
+.error-messages p {
+    color: red;
+    font-size: 0.9rem;
+    margin: 0 0 10px;
+}
+
+

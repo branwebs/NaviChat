@@ -44,7 +44,7 @@ class UserRegisterController
             $errors[] = "Password must be at least 6 characters long.";
         }
 
-        if (!preg_match('/^[0-9]{10,15}$/', $phone)) {
+        if (!preg_match('/^[0-9]{8,10}$/', $phone)) {
             $errors[] = "Phone number must be 10-15 digits.";
         }
 

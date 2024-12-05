@@ -29,7 +29,7 @@
 
 <body>
     <?php
-   require_once 'dbCfg.php';
+    require_once 'dbCfg.php';
     ?>
 
 
@@ -41,7 +41,7 @@
 
             <nav class="navbar navbar-expand-lg navbar-dark">
 
-                <a class="navbar-brand" href="">NaviBot</a>
+                <a class="navbar-brand" href="">NaviChat</a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
                     <span class="navbar-toggler-icon"></span>
@@ -79,7 +79,9 @@
 
                 <div class="col-lg-6">
                     <h1 class="big-heading">Enhance your business with AI customer service.</h1>
-                    <button type="button" class="btn btn-dark btn-lg download-button"><i class="fa-regular fa-pen-to-square"></i> Register</button>
+                    <a href="Boundary/Users/register.php" class="btn btn-dark btn-lg download-button">
+                        <i class="fa-regular fa-pen-to-square"></i> Register
+                    </a>
                 </div>
 
             </div>
@@ -92,61 +94,61 @@
     <!-- FAQ -->
 
     <section class="white-section" id="faq">
-    <div class="container-fluid">
-        <div class="row">
-            <?php
-            $faqQuery = "SELECT title, details FROM faq";
-            $faqResult = $conn->query($faqQuery);
+        <div class="container-fluid">
+            <div class="row">
+                <?php
+                $faqQuery = "SELECT title, details FROM faq";
+                $faqResult = $conn->query($faqQuery);
 
-            if ($faqResult->num_rows > 0) {
-                while ($row = $faqResult->fetch_assoc()) {
-                    echo '<div class="feature-box col-lg-4">';
-                    echo '<i class="icon fas fa-check-circle fa-4x"></i>';
-                    echo '<h3 class="feature-title">' . htmlspecialchars($row['title']) . '</h3>';
-                    echo '<p>' . htmlspecialchars($row['details']) . '</p>';
-                    echo '</div>';
+                if ($faqResult->num_rows > 0) {
+                    while ($row = $faqResult->fetch_assoc()) {
+                        echo '<div class="feature-box col-lg-4">';
+                        echo '<i class="icon fas fa-check-circle fa-4x"></i>';
+                        echo '<h3 class="feature-title">' . htmlspecialchars($row['title']) . '</h3>';
+                        echo '<p>' . htmlspecialchars($row['details']) . '</p>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "<p>No FAQs found.</p>";
                 }
-            } else {
-                echo "<p>No FAQs found.</p>";
-            }
-            ?>
+                ?>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 
     <!-- Testimonials -->
 
     <section class="colored-section" id="testimonials">
-    <div id="testimonial-carousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <?php
-            $testimonialQuery = "SELECT review, reviewer FROM testimonials";
-            $testimonialResult = $conn->query($testimonialQuery);
-            $isActive = true;
+        <div id="testimonial-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <?php
+                $testimonialQuery = "SELECT review, reviewer FROM testimonials";
+                $testimonialResult = $conn->query($testimonialQuery);
+                $isActive = true;
 
-            if ($testimonialResult->num_rows > 0) {
-                while ($row = $testimonialResult->fetch_assoc()) {
-                    echo '<div class="carousel-item ' . ($isActive ? 'active' : '') . ' container-fluid">';
-                    echo '<h2 class="testimonial-text">' . htmlspecialchars($row['review']) . '</h2>';
-                    echo '<em>' . htmlspecialchars($row['reviewer']) . '</em>';
-                    echo '</div>';
-                    $isActive = false;
+                if ($testimonialResult->num_rows > 0) {
+                    while ($row = $testimonialResult->fetch_assoc()) {
+                        echo '<div class="carousel-item ' . ($isActive ? 'active' : '') . ' container-fluid">';
+                        echo '<h2 class="testimonial-text">' . htmlspecialchars($row['review']) . '</h2>';
+                        echo '<em>' . htmlspecialchars($row['reviewer']) . '</em>';
+                        echo '</div>';
+                        $isActive = false;
+                    }
+                } else {
+                    echo "<p>No testimonials found.</p>";
                 }
-            } else {
-                echo "<p>No testimonials found.</p>";
-            }
-            ?>
+                ?>
+            </div>
+            <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
         </div>
-        <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
-    </div>
-</section>
+    </section>
 
     <!-- Press -->
     <section class="colored-section" id="press">
@@ -160,33 +162,33 @@
 
     <!-- Pricing -->
     <section class="white-section" id="pricing">
-    <h2 class="section-heading">Our Subscription Plan</h2>
-    <p>Simple plan with all the features!</p>
-    <div class="row">
-        <?php
-        $pricingQuery = "SELECT tier, price, features FROM Pricing";
-        $pricingResult = $conn->query($pricingQuery);
+        <h2 class="section-heading">Our Subscription Plan</h2>
+        <p>Simple plan with all the features!</p>
+        <div class="row">
+            <?php
+            $pricingQuery = "SELECT tier, price, features FROM Pricing";
+            $pricingResult = $conn->query($pricingQuery);
 
-        if ($pricingResult->num_rows > 0) {
-            while ($row = $pricingResult->fetch_assoc()) {
-                echo '<div class="pricing-column col-lg-4 col-md-6">';
-                echo '<div class="card">';
-                echo '<div class="card-header">';
-                echo '<h3>' . htmlspecialchars($row['tier']) . '</h3>';
-                echo '</div>';
-                echo '<div class="card-body">';
-                echo '<h2 class="price-text">$' . htmlspecialchars($row['price']) . ' / mo</h2>';
-                echo '<p>' . nl2br(htmlspecialchars($row['features'])) . '</p>';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
+            if ($pricingResult->num_rows > 0) {
+                while ($row = $pricingResult->fetch_assoc()) {
+                    echo '<div class="pricing-column col-lg-4 col-md-6">';
+                    echo '<div class="card">';
+                    echo '<div class="card-header">';
+                    echo '<h3>' . htmlspecialchars($row['tier']) . '</h3>';
+                    echo '</div>';
+                    echo '<div class="card-body">';
+                    echo '<h2 class="price-text">$' . htmlspecialchars($row['price']) . ' / mo</h2>';
+                    echo '<p>' . nl2br(htmlspecialchars($row['features'])) . '</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            } else {
+                echo "<p>No pricing plans found.</p>";
             }
-        } else {
-            echo "<p>No pricing plans found.</p>";
-        }
-        ?>
-    </div>
-</section>
+            ?>
+        </div>
+    </section>
 
 
     <!-- Call to Action -->
@@ -196,7 +198,9 @@
         <div class="container-fluid">
 
             <h3 class="big-heading">Join us now and enhance your businesses!</h3>
-            <button class="download-button btn btn-lg btn-dark" type="button"><i class="fa-regular fa-pen-to-square"></i> Register</button>
+            <a href="Boundary/Users/register.php" class="btn btn-dark btn-lg download-button">
+                <i class="fa-regular fa-pen-to-square"></i> Register
+            </a>
             <button class="download-button btn btn-lg brn-light" type="button"><i class="fab fa-google-play"></i> Contact Us</button>
         </div>
     </section>

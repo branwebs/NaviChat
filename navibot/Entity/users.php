@@ -8,7 +8,7 @@ class User
 
     public function __construct()
     {
-        global $conn; // Assuming $conn is the global database connection
+        global $conn; 
         $this->conn = $conn;
     }
 
@@ -27,6 +27,18 @@ class User
             "INSERT INTO users (name, email, password, company, phone, access) VALUES (?, ?, ?, ?, ?, 0)"
         );
         $stmt->bind_param("sssss", $name, $email, $password, $company, $phone);
+        return $stmt->execute();
+    }
+
+    public function updateAccess($email, $access) {
+        $stmt = $this->conn->prepare("UPDATE users SET access = ? WHERE email = ?");
+        $stmt->bind_param('is', $access, $email);
+        return $stmt->execute();
+    }
+
+    public function deleteUser($email) {
+        $stmt = $this->conn->prepare("DELETE FROM users WHERE email = ?");
+        $stmt->bind_param('s', $email);
         return $stmt->execute();
     }
 }

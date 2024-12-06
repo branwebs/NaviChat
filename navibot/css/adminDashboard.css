@@ -1,0 +1,162 @@
+/* General Layout */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background-color: #f7f7f7;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #fff;
+    padding: 15px;
+    display: block;
+    font-size: 16px;
+}
+
+.sidebar a:hover {
+    background-color: #495057;
+}
+
+.sidebar a.active {
+    background-color: #007bff;
+}
+
+/* Logout Button */
+.logout-btn {
+    margin-top: auto;
+    /* Pushes the logout button to the bottom */
+    background-color: #dc3545;
+    /* Red for the logout button */
+    text-align: center;
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+    /* Darker red on hover */
+}
+
+/* Content Area */
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
+.section {
+    display: none;
+    /* Hide sections by default */
+}
+
+.section.active {
+    display: block;
+    /* Show active section */
+}
+
+/* Form Layout */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    flex: 0 0 100px;
+    /* Fixed width for labels */
+    font-weight: 600;
+    color: #555;
+    margin-right: 10px;
+}
+
+.form-group input,
+.form-group textarea {
+    flex: 1;
+    /* Input/textarea will take remaining space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 80px;
+    resize: none;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/*User Management*/
+    table {
+        width: 100%; /* Ensures table takes full width of the container */
+        border-collapse: collapse;
+        table-layout: fixed; /* Ensures consistent column width */
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px; /* Adjust padding for better spacing */
+        text-align: center;
+        word-wrap: break-word; /* Ensures content fits within the cells */
+    }
+    th {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+    tbody tr {
+        height: 50px; /* Sets a fixed height for rows */
+    }
+    th, td:nth-child(1) { width: 20%; } /* Email column */
+    td:nth-child(2) { width: 15%; } /* Name column */
+    td:nth-child(3) { width: 15%; } /* Phone column */
+    td:nth-child(4) { width: 25%; } /* Company column */
+    td:nth-child(5) { width: 25%; } /* Subscription column */
+    .no-record {
+        text-align: center;
+        color: gray;
+    }
+    button {
+        margin: 5px;
+        padding: 8px 15px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    button[type='submit'][name='action'][value='reject'] {
+        background-color: #dc3545; /* Red for reject */
+    }
+    button[type='submit'][name='action'][value='reject']:hover {
+        background-color: #c82333; /* Darker red for reject */
+    }
+
+

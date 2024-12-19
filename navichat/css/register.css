@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Use full viewport height */
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    background-color: #40a89e;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    padding-top: 30px; /* Space at the top */
+    padding-bottom: 30px; /* Space at the bottom */
+}
+
+.form-box {
+    width: 100%;
+    max-width: 400px; /* Max width for the form */
+    min-height: 400px; /* Ensure the form box has some height */
+    background-color: transparent;
+    padding: 20px;
+    box-sizing: border-box; /* Ensure padding is included in width/height calculation */
+    overflow-y: auto; /* Allows scrolling if the content exceeds the available height */
+}
+
+.navi-chat {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.navi-chat:hover {
+    text-decoration: underline; /* Optional hover effect */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: black;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: lime;
+}
+
+.register-btn {
+    color: black;
+    cursor: pointer;
+    border: none;
+}
+
+
+.error-messages p {
+    color: red;
+    font-size: 0.9rem;
+    margin: 0 0 10px;
+}
+

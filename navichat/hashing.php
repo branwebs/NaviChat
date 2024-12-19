@@ -1,5 +1,5 @@
 <?php
-require_once 'dbCfg.php'; // Ensure this points to your database configuration file
+require_once 'dbCfg.php'; 
 
 $sql = "SELECT email, password FROM users";
 $result = $conn->query($sql);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2024 at 07:33 AM
+-- Generation Time: Dec 06, 2024 at 06:49 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -94,6 +94,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `phone` int(20) NOT NULL,
   `company` varchar(100) NOT NULL,
+  `subscription` varchar(20) NOT NULL,
   `access` int(5) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -101,10 +102,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`email`, `name`, `password`, `phone`, `company`, `access`) VALUES
-('admin', 'admin', '$2y$10$3FoWDbomqvc7Ao5hT3mNSuw', 0, 'navichat', 4),
-('bryden@box.com', 'bryden', '$2y$10$ISMGjoaYzKZXaxEI5du9D.vfu.SkpFA.bTILxG8eiMO/MQ0Kgd51K', 2147483647, 'hi5', 1),
-('cdshop@business.com', 'Carl Goodwill', '$2y$10$NGkAJvmGVPrdh/GYdTtkNO5', 82353535, 'cdshop', 1);
+INSERT INTO `users` (`email`, `name`, `password`, `phone`, `company`, `subscription`, `access`) VALUES
+('admin@navibot.com', 'admin', '$2y$10$z8oNNL1qxprkflbzlQOdW.peQy/Q2mEHbRo/2a265rCyal88mfrZy', 0, 'navichat', '', 4),
+('eggs@farm.com', 'yolk', '$2y$10$iAaztbztcQLPMw4bV72Br.8Xn/fIL3yBHSbilD5l8OtQJ7zxTI28K', 86549012, 'eggs', '', 1),
+('lol@riot.com', 'jinx', '$2y$10$wBmwFs7hqRtZGdx5Bj6mheQN.lP4RqBmqxaT68KEMJeej/RJ3UwYS', 44444444, 'riot', '', 1),
+('smith@mail.com', 'john', '$2y$10$bDQG2x.lxJ7li/Wd9y9MHunimr1pel46ggqQ7sHgS9clb74NX5GJW', 77778888, 'smithy', '', 1),
+('summers@mail.com', 'hope', '$2y$10$kuNxNNG1L0ipqN18bKuZp.SWLuEFkjzViS6kQU4hOKtONMbnF15pq', 62353535, 'summer', '', 1);
 
 --
 -- Indexes for dumped tables

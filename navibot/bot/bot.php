@@ -75,12 +75,12 @@
             <div class="row">
 
                 <div class="col-lg-6">
-                    <df-messenger
+                <df-messenger
                     intent="WELCOME"
                     chat-title="NaviChatbot"
-                    agent-id="146f95dd-9896-41aa-bcec-9fed8ef6ad1b"
-                    language-code="en"
-                    ></df-messenger>
+                    agent-id="693746d9-89f4-4297-be57-c63d5235df1a"
+                    language-code="en">
+                </df-messenger>
                 </div>
 
             </div>

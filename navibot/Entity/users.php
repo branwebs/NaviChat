@@ -29,6 +29,26 @@ class User
         $stmt->bind_param("sssss", $name, $email, $password, $company, $phone);
         return $stmt->execute();
     }
+
+    public function getBot($industry)
+    {
+        // Query the database for chatbot configuration based on industry
+        $stmt = $this->conn->prepare(
+            "SELECT intent, chat_title, agent_id, language_code FROM chatbot_config WHERE industry = ?"
+        );
+        $stmt->bind_param("s", $industry);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Return the chatbot configuration as an associative array
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return [
+                "error" => "No chatbot configuration found for the selected industry."
+            ];
+        }
+    }
 }
 
 ?>

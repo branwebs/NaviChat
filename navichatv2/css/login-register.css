@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.navi-chat {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #38a89d;
+    text-decoration: none;
+}
+
+section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(47, 172, 113, 0.1);
+    padding: 45px;
+    width: 400px;
+}
+
+.form-box {
+    text-align: center;
+
+}
+
+.login-title, .register-title {
+    font-size: 24px;
+    color: #38a89d;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 15px;
+    color: #333333;
+    display: block;
+    margin-bottom: 7px;
+    text-align: left;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #38a89d;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #2f8d84;
+}
+
+.success-message {
+    color: #28a745;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.error-messages {
+    color: #dc3545;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.links {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333333;
+}
+
+.links a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}

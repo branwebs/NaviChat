@@ -1,0 +1,328 @@
+.feedback-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.feedback-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.feedback-form {
+    margin-top: 20px;
+}
+
+.feedback-form .form-group {
+    margin-bottom: 20px;
+}
+
+.feedback-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.feedback-form input[type="text"],
+.feedback-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.feedback-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.feedback-form input[type="text"]:focus,
+.feedback-form textarea:focus {
+    outline: none;
+    border-color: #29b6a3;
+    box-shadow: 0 0 5px rgba(41, 182, 163, 0.5);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.submit-btn,
+.cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn {
+    background-color: #29b6a3;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #229c8e;
+}
+
+.cancel-btn {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background-color: #d5d5d5;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* Feedback List Styles */
+.feedback-list {
+    margin-top: 20px;
+}
+
+.feedback-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.feedback-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.feedback-header h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status.pending {
+    background-color: #ffd700;
+    color: #856404;
+}
+
+.status.resolved {
+    background-color: #28a745;
+    color: white;
+}
+
+.feedback-content {
+    margin: 15px 0;
+    color: #555;
+}
+
+.feedback-content p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.feedback-footer {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.no-feedback {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    margin: 30px 0;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+/* Additional button styles */
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.button-group button {
+    flex: 0 0 auto;
+}
+
+/* Admin Feedback Management Styles */
+.status-form {
+    margin: 0;
+}
+
+.status-form select {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: white;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.status-form select:focus {
+    outline: none;
+    border-color: #29b6a3;
+    box-shadow: 0 0 5px rgba(41, 182, 163, 0.5);
+}
+
+.feedback-footer .user {
+    margin-right: 20px;
+    color: #666;
+}
+
+/* Status Colors */
+.status-form select option[value="pending"] {
+    background-color: #ffd700;
+    color: #856404;
+}
+
+.status-form select option[value="resolved"] {
+    background-color: #28a745;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .feedback-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .status-form {
+        width: 100%;
+    }
+    
+    .status-form select {
+        width: 100%;
+    }
+}
+
+/* Action Buttons */
+.action-buttons {
+    margin-top: 10px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.edit-btn {
+    background-color: #29b6a3;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #229c8e;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Edit Form */
+.edit-feedback-form {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.edit-feedback-form .form-group {
+    margin-bottom: 15px;
+}
+
+.edit-feedback-form label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.edit-feedback-form input[type="text"],
+.edit-feedback-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.edit-feedback-form input[type="text"]:focus,
+.edit-feedback-form textarea:focus {
+    border-color: #29b6a3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(41, 182, 163, 0.5);
+}
+
+/* Alert Messages */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+} 

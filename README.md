@@ -10,7 +10,7 @@ XAMPP services:
 
 ngrok service:
 1. Start the program
-2. Type ngrok http 80 into the console
+2. Type "ngrok http 80" into the console
 3. Copy the forwarding address into the Webhook of DialogFlow
 
 

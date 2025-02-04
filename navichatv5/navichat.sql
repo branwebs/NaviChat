@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2024 at 12:40 PM
+-- Generation Time: Feb 04, 2025 at 09:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,6 +48,30 @@ INSERT INTO `chatbot_config` (`id`, `industry`, `intent`, `chat_title`, `agent_i
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `data_count`
+--
+
+CREATE TABLE `data_count` (
+  `id` int(11) NOT NULL,
+  `symptom` varchar(50) NOT NULL,
+  `count` int(11) NOT NULL DEFAULT 0,
+  `last_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `data_count`
+--
+
+INSERT INTO `data_count` (`id`, `symptom`, `count`, `last_updated`) VALUES
+(1, 'fever', 3, '2025-02-04 08:37:24'),
+(2, 'cough', 0, '2025-02-01 07:57:53'),
+(3, 'fatigue', 0, '2025-02-01 07:58:00'),
+(4, 'pain', 0, '2025-02-01 07:58:10'),
+(5, 'covid', 0, '2025-02-04 07:29:31');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `faq`
 --
 
@@ -82,8 +106,7 @@ CREATE TABLE `pricing` (
 --
 
 INSERT INTO `pricing` (`tier`, `price`, `features`) VALUES
-('Premium', '59', 'Chatbot API + Voice Chat + Ticketing'),
-('Starter', '29', 'Chatbot API');
+('Price', '59', 'Chatbot API + Analytics + Ticketing');
 
 -- --------------------------------------------------------
 
@@ -147,6 +170,12 @@ ALTER TABLE `chatbot_config`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `data_count`
+--
+ALTER TABLE `data_count`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `faq`
 --
 ALTER TABLE `faq`
@@ -179,6 +208,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `chatbot_config`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `data_count`
+--
+ALTER TABLE `data_count`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

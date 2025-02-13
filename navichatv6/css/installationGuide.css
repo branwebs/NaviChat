@@ -1,0 +1,95 @@
+
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px; /* Sidebar width */
+    height: 100%;
+    background-color: #29b6a3; /* Updated color */
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures logout is at the bottom */
+}
+
+/* Menu Items */
+.sidebar .menu-item {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    font-weight: bold; /* Text bold */
+}
+
+.sidebar .menu-item.active,
+.sidebar .menu-item:hover {
+    background-color: #239e8f; /* Slightly darker shade for hover */
+    font-weight: bold; /* Ensure bold on hover */
+}
+
+/* Logout Button */
+.sidebar .logout-btn {
+    margin-top: auto; /* Pushes the logout button to the bottom */
+    color: #211f1f; /* Updated to white */
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    text-decoration: none;
+    background-color: #e0e0e0; /* Updated background */
+}
+
+.sidebar .logout-btn:hover {
+    background-color: #b03030;; /* Darker red for hover */
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Content Area */
+.section {
+    margin-left: 270px;
+    padding: 20px;
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+h2 {
+    color: #333;
+}
+
+.installation-content h3 {
+    color: #444;
+    margin-top: 20px;
+}
+
+.installation-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+}
+
+pre {
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}

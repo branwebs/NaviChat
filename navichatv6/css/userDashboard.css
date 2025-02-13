@@ -1,0 +1,124 @@
+
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px; /* Sidebar width */
+    height: 100%;
+    background-color: #29b6a3; /* Updated color */
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures logout is at the bottom */
+}
+
+/* Menu Items */
+.sidebar .menu-item {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    font-weight: bold; /* Text bold */
+}
+
+.sidebar .menu-item.active,
+.sidebar .menu-item:hover {
+    background-color: #239e8f; /* Slightly darker shade for hover */
+    font-weight: bold; /* Ensure bold on hover */
+}
+
+/* Logout Button */
+.sidebar .logout-btn {
+    margin-top: auto; /* Pushes the logout button to the bottom */
+    color: #211f1f; /* Updated to white */
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    text-decoration: none;
+    background-color: #e0e0e0; /* Updated background */
+}
+
+.sidebar .logout-btn:hover {
+    background-color: #b03030;; /* Darker red for hover */
+    color: #fff;
+    font-weight: bold;
+}
+
+
+/* Content Area */
+.section {
+    margin-left: 270px;
+    padding: 20px;
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Headings */
+h2 {
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+/* Analytics Section */
+.analytics-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Table Styles */
+.analytics-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.analytics-table th,
+.analytics-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.analytics-table th {
+    background-color: #2c3e50;
+    color: white;
+}
+
+/* Chart Container */
+canvas {
+    margin-top: 20px;
+    max-width: 100%;
+}

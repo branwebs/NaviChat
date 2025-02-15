@@ -2,7 +2,7 @@
 
 Live Website: navichat.info
 
-Chatbot test site: http://navichat.infinityfreeapp.com/
+Chatbot test site: navichat.infinityfreeapp.com
 
 -----------------------------------------------------
 For local testing

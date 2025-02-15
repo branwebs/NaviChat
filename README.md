@@ -4,6 +4,14 @@ Live Website: navichat.info
 
 Chatbot test site: navichat.infinityfreeapp.com
 
+Introduction:
+
+1. Login to an registered user account in the website navichat.info.
+2. Proceed to the chatbot test site and interact with it.
+3. Watch data get updated live into the website from your interaction with the chatbot.
+
+
+
 -----------------------------------------------------
 For local testing
 
